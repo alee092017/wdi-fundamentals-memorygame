@@ -24,7 +24,6 @@ var cards = [
 var cardsInPlay = [];
 
 var checkForMatch = function() {
-
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		alert("You found a match!");
 		} else {
@@ -41,7 +40,7 @@ var flipCard = function() {
 	console.log(cards[cardId].suit);
 	
 	if (cardsInPlay.length === 2) {
-		checkForMatch();
+		setTimeout(checkForMatch(), 9000);
 	}	
 	
 };
@@ -50,14 +49,19 @@ var createBoard = function() {
 	for (var i = 0; i < cards.length; i++) {
 		var cardElement = document.createElement('img');
 		cardElement.setAttribute('src', 'images/back.png');
-		cardElement.setAttribute('data-id', i);
 		cardElement.addEventListener('click',flipCard);
+		cardElement.setAttribute('data-id', i);
 		document.getElementById('game-board').appendChild(cardElement);
 	}
 };
 
 createBoard();
 
+
+/* cannot figure out why the alert displays BEFORE 
+second card is flipped.  tried reordering code and
+adding a time delay... *$%()@($%)
+*/
 
 
 /*
